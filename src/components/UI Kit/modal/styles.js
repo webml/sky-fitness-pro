@@ -11,5 +11,7 @@ export const Modal = styled.div`
 
 export const ModalContent = styled.div`
     background: white;
-    padding: 20px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
 `
