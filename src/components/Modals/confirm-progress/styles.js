@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import handOk from '../../../img/hand-ok.jpg'
 
 export const ModalBox = styled.div`
     width: 444px;
@@ -21,7 +20,7 @@ export const ModalTitle = styled.h2`
 export const ModalImg = styled.div`
     width: 100%;
     height: 100%;
-    background-image: url(${handOk});
+    background-image: url(${process.env.PUBLIC_URL + '/img/hand-ok.jpg'});
     background-position: top 15px left 110px; 
     background-repeat: no-repeat;
     background-size: 44%;
