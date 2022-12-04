@@ -1,4 +1,5 @@
 import React from "react";
+import Form from '../form'
 import FormInput from "../form-input";
 import Button from '../../UI Kit/button'
 
@@ -8,7 +9,7 @@ const LoginAndSignUp = () => {
     const auth = true
 
     return(
-        <>
+        <Form>
             <div>Здесь должен быть логотип</div>
             <FormInput type='text' placeholder='Логин' />
             <FormInput type='password' placeholder='Пароль' />
@@ -17,7 +18,7 @@ const LoginAndSignUp = () => {
                 <Button title={!auth ? 'Зарегистрироваться' : 'Войти'}/>
                 {auth && <S.SignUpButton>Зарегистрироваться</S.SignUpButton>}
             </S.FormButtonBox>
-        </>
+        </Form>
         
     )
 }
