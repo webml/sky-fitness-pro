@@ -5,7 +5,7 @@ export const ModalBox = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    padding: 22px;
+    padding: 42px;
     width: 404px;
 `
 
