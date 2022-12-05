@@ -6,8 +6,7 @@ export const TrainingChoice = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 36px;
-    padding-bottom: 58px;
+    padding-top: 56px;
     position: relative;
 `
 

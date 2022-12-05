@@ -7,3 +7,9 @@ export const trainings = [
     {id: 6, title: 'Чумачечий позвоночник', completed: false},
     {id: 7, title: 'Расслабляющи', completed: false},
 ]
+
+export const trainingElements = [
+    {id: 1, title: 'наклоны вперед'},
+    {id: 2, title: 'наклоны назад'},
+    {id: 3, title: 'поднятие ног, согнутых в коленях'}
+]
