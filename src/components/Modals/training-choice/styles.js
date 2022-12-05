@@ -19,21 +19,23 @@ export const TrainingChoiceTitle = styled.h2`
     color: #000000;
 `
 
-export const TrainingList = styled.ul`
+export const TrainingListWrapper = styled.div`
+    padding-right: 24px; 
     position: absolute;
     top: 116px;
     left: 83px;
-    height: 73%;
+    height: 74%;
+
+    .os-theme-dark.os-scrollbar>.os-scrollbar-track, 
+    .os-theme-dark.os-scrollbar>.os-scrollbar-track>.os-scrollbar-handle, 
+    .os-theme-light.os-scrollbar>.os-scrollbar-track, 
+    .os-theme-light.os-scrollbar>.os-scrollbar-track>.os-scrollbar-handle {
+        background: rgba(0, 0, 0, 0.15);
+    }
+`
+
+export const TrainingList = styled.ul`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 12px;
-    overflow-y: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    gap:12px;
 `

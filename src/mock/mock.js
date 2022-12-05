@@ -1,8 +1,9 @@
 export const trainings = [
-    {id: 1, title: 'Утренняя практика', isChecked: true},
-    {id: 2, title: 'Красота и здоровье', isChecked: true},
-    {id: 3, title: 'Асаны стоя', isChecked: false},
-    {id: 4, title: 'Растягиваем мышцы бедра', isChecked: false},
-    {id: 5, title: 'Гибкость спины', isChecked: false},
-    {id: 6, title: 'Чумачечий позвоночник', isChecked: false},
+    {id: 1, title: 'Утренняя практика', completed: true},
+    {id: 2, title: 'Красота и здоровье', completed: true},
+    {id: 3, title: 'Асаны стоя', completed: false},
+    {id: 4, title: 'Растягиваем мышцы бедра', completed: true},
+    {id: 5, title: 'Гибкость спины', completed: false},
+    {id: 6, title: 'Чумачечий позвоночник', completed: false},
+    {id: 7, title: 'Расслабляющи', completed: false},
 ]
