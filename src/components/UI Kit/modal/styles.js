@@ -12,4 +12,5 @@ export const Modal = styled.div`
 export const ModalContent = styled.div`
     background: white;
     border-radius: 12px;
+
 `

@@ -1,5 +1,6 @@
 import React from "react";
 
+
 import * as S from './styles'
 
 const TrainingListItem = ({title, day, completed}) => {
@@ -12,6 +13,7 @@ const TrainingListItem = ({title, day, completed}) => {
                 <S.CourseTile>Йога на каждый день</S.CourseTile>
                 <S.DaySpan>{day} день</S.DaySpan>
             </S.ItemDescription>
+
         </S.TrainingListItem>
     )
 }
