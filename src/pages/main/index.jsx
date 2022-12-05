@@ -3,12 +3,12 @@ import { Courses } from "../../components/Сourses";
 import * as S from "./style";
 
 function Main() {
-  const up = ()=>{
+  const up = () => {
     window.scrollTo({
-      top:0,
-      behavior: 'smooth'
-    })
-  }
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <S.Main>
       <S.Header>
@@ -30,11 +30,11 @@ function Main() {
         </div>
       </S.Box>
       <S.СoursesGallery>
-        <Courses name="Йога" />
-        <Courses name="Стретчинг" />
-        <Courses name="Танцевальный фитнес" />
-        <Courses name="Степ-аэробика" />
-        <Courses name="Бодифлекс" />
+        <Courses name="Йога" img="/courses/purple.png" />
+        <Courses name="Стретчинг" img="/courses/blue.png" />
+        <Courses name="Танцевальный фитнес" img="/courses/orange.png" />
+        <Courses name="Степ-аэробика" img="/courses/green.png" />
+        <Courses name="Бодифлекс" img="/courses/leightBlue.png" />
       </S.СoursesGallery>
 
       <S.BottomBox>

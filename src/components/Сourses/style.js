@@ -1,36 +1,11 @@
 import styled, { css } from "styled-components";
 
-const topic = (name) => {
-  if (name === "Йога") {
-    return css`
-      background-image: url(${process.env.PUBLIC_URL + "/courses/purple.png"});
-    `;
-  }
-  if (name === "Стретчинг") {
-    return css`
-      background-image: url(${process.env.PUBLIC_URL + "/courses/blue.png"});
-    `;
-  }
-  if (name === "Танцевальный фитнес") {
-    return css`
-      background-image: url(${process.env.PUBLIC_URL + "/courses/orange.png"});
-    `;
-  }
-  if (name === "Степ-аэробика") {
-    return css`
-      background-image: url(${process.env.PUBLIC_URL + "/courses/green.png"});
-    `;
-  }
-  if (name === "Бодифлекс") {
-    return css`
-      background-image: url(${process.env.PUBLIC_URL +
-      "/courses/leightBlue.png"});
-    `;
-  }
-  return css``;
+const topic = (img) => {
+  return css`
+  background-image: url(${process.env.PUBLIC_URL + img});`;
 };
 export const Box = styled.div`
-  ${(props) => topic(props.name)};
+  ${(props) => topic(props.img)};
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
