@@ -18,7 +18,7 @@ export const ButtonEnter = styled.button`
   height: 36px;
   background: #140d40;
   border-radius: 46px;
-  font-family: "StratosSkyeng";
+
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -33,7 +33,6 @@ export const ButtonEnter = styled.button`
   }
 `;
 export const Text = styled.p`
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -41,7 +40,6 @@ export const Text = styled.p`
   opacity: 0.5;
 `;
 export const TextGreeting = styled.p`
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 60px;
@@ -54,7 +52,7 @@ export const Сhanges = styled.div`
   background-image: url(${process.env.PUBLIC_URL + "/Union.png"});
   background-repeat: no-repeat;
   background-position: center;
-  font-family: "StratosSkyeng";
+
   color: #ff8071;
   width: 231px;
   height: 212.27px;
@@ -63,7 +61,6 @@ export const Сhanges = styled.div`
   align-items: center;
 `;
 export const TextСhanges = styled.div`
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -100,7 +97,6 @@ export const BottomUp = styled.div`
   background: #c7e957;
   border-radius: 46px;
 
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;

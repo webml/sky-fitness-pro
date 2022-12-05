@@ -82,7 +82,6 @@ export const BottomUp = styled.button`
   background: #c7e957;
   border-radius: 80px;
 
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;

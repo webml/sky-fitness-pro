@@ -16,7 +16,7 @@ export const Header = styled.div`
 export const Сontents = styled.div`
   padding-top: 75px;
   line-height: 56px;
-  font-family: "StratosSkyeng";
+
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
@@ -24,7 +24,6 @@ export const Сontents = styled.div`
   color: #000000;
 `;
 export const Text = styled.p`
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -37,7 +36,7 @@ export const Buttom = styled.button`
   height: 52px;
   background: #580ea2;
   border-radius: 46px;
-  font-family: "StratosSkyeng";
+
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -69,7 +68,6 @@ export const Ellipse = styled.div`
   border-radius: 50%;
 `;
 export const Name = styled.div`
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -77,7 +75,6 @@ export const Name = styled.div`
   color: #000000;
 `;
 export const Menu = styled.select`
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -85,12 +82,10 @@ export const Menu = styled.select`
   color: #000000;
   border: none;
   background: #fafafa;
-
-
 `;
 export const BoxMen = styled.div`
   display: flex;
-  gap:12px;
+  gap: 12px;
   align-items: center;
   justify-content: flex-end;
 `;
