@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const TrainingListItem = styled.li`
+
     position: relative;
     flex: 0 1 76px;
     width: 278px;
@@ -24,6 +25,7 @@ export const ItemTitle = styled.h3`
     line-height: 23px;
     text-align: center;
     letter-spacing: -0.05px;
+
     max-width: 188px; 
 `
 
@@ -38,6 +40,10 @@ export const CustomCheckbox = styled.img`
 export const ItemDescription = styled.div``
 
 export const DaySpan = styled.span`
+    margin-bottom: 6px;
+`
+
+export const StyledSpan = styled.span`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -45,6 +51,7 @@ export const DaySpan = styled.span`
     text-align: center;
     letter-spacing: 0.001em;
 `
+
 
 export const CourseTile = styled(DaySpan)`
     ::after {

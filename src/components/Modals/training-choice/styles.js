@@ -7,6 +7,7 @@ export const TrainingChoice = styled.div`
     flex-direction: column;
     align-items: center;
     padding-top: 36px;
+    padding-bottom: 58px;
     position: relative;
 `
 
