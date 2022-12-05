@@ -1,3 +1,4 @@
+
 import React, { useRef } from "react";
 import TrainingListItem from '../training-item'
 import { useScrollbar } from '../../../hooks/useScrollbar'
@@ -24,6 +25,7 @@ const TrainingChoice = () => {
                     ))}
                 </S.TrainingList>
             </S.TrainingListWrapper> 
+
         </S.TrainingChoice>
     )
 }
