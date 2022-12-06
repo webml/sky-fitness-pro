@@ -7,7 +7,11 @@ export function Profile(params) {
     <S.Profile>
       <S.Header>
         <BlackLogo />
-        <S.BoxMen><S.Ellipse/><S.Name>Сергей</S.Name><S.Menu/></S.BoxMen>
+        <S.BoxMen>
+          <S.Ellipse />
+          <S.Name>Сергей</S.Name>
+          <S.Menu />
+        </S.BoxMen>
       </S.Header>
       <S.Сontents>
         <b>Мой профиль</b>
@@ -22,10 +26,9 @@ export function Profile(params) {
         <b>Мои курсы</b>
       </S.Сontents>
       <S.BoxCurses>
-        <Courses butt='yes' name ='Йога'/>
-        <Courses butt='yes' name="Стретчинг" />
-        <Courses butt='yes' name="Бодифлекс" />
-
+        <Courses butt="yes" name="Йога" />
+        <Courses butt="yes" name="Стретчинг" />
+        <Courses butt="yes" name="Бодифлекс" />
       </S.BoxCurses>
     </S.Profile>
   );

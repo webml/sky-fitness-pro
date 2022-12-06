@@ -2,7 +2,8 @@ import styled, { css } from "styled-components";
 
 const topic = (img) => {
   return css`
-  background-image: url(${process.env.PUBLIC_URL + img});`;
+    background-image: url(${process.env.PUBLIC_URL + img});
+  `;
 };
 export const Box = styled.div`
   ${(props) => topic(props.img)};
@@ -29,7 +30,6 @@ export const Name = styled.div`
   width: 290px;
   height: 120px;
 
-  font-family: "Abhaya Libre ExtraBold";
   font-style: normal;
   font-weight: 800;
   font-size: 36px;
@@ -47,12 +47,12 @@ export const Name = styled.div`
 export const BottomUp = styled.button`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 7px 24px 9px;
   gap: 8px;
   border: none;
-  width: 170px;
+  width: 174px;
   height: 43px;
   background: #c7e957;
   border-radius: 80px;
