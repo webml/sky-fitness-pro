@@ -1,5 +1,6 @@
 import React from "react";
 import { BlackLogo } from '../logo/BlackLogo'
+import { UserProfile } from "../user-profile/userProfile";
 import * as S from "./style";
 
 export const TopBar = () => {
@@ -10,9 +11,7 @@ export const TopBar = () => {
                 <BlackLogo/>
             </S.SubDiv>
             <S.SubDiv>
-                <S.UserPic src={process.env.PUBLIC_URL + "/profile.png"} alt="profile_picture"></S.UserPic>
-                <S.UserName>Сергей</S.UserName>
-                <S.UserInfoBtn></S.UserInfoBtn>
+                <UserProfile/>
             </S.SubDiv>
         </S.Main>
     )

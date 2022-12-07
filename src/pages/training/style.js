@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-    padding-left: 140px;
-    padding-right: 140px;   
+    padding-left: calc(100% - 90%);
+    padding-right: calc(100% - 90%);   
 `;
 
 export const Header = styled.h1`
