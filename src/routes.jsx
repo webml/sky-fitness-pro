@@ -16,7 +16,7 @@ export const AppRoutes = () => {
                 element={<Profile/>}
             />
             <Route
-                path="/"
+                path="/training"
                 element={<Training/>}
             />
 
