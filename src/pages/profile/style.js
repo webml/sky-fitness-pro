@@ -2,16 +2,20 @@ import styled from "styled-components";
 
 export const Profile = styled.div`
   position: relative;
-  height: 1764px;
-  padding-left: 140px;
-  padding-right: 140px;
+  padding-top: 30px;
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
+  padding-bottom: 95px;
   background: #fafafa;
 `;
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-bot: 29px;
-  padding-top: 29px;
+
+  img {
+    width: 220px;
+    height: 35px;
+  }
 `;
 export const Сontents = styled.div`
   padding-top: 75px;
@@ -24,6 +28,8 @@ export const Сontents = styled.div`
   color: #000000;
 `;
 export const Text = styled.p`
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;

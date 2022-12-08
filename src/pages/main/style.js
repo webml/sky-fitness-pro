@@ -2,16 +2,17 @@ import styled from "styled-components";
 
 export const Main = styled.div`
   position: relative;
-  width: 1440px;
   background: #271a58;
-  padding-left: 140px;
-  padding-right: 140px;
+  padding-top: 30px;
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
+  padding-bottom: 95px;
 `;
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-bot: 29px;
-  padding-top: 29px;
+  padding-bottom: 30px;
+  padding-top: 30px;
 `;
 export const ButtonEnter = styled.button`
   width: 77px;
@@ -33,6 +34,7 @@ export const ButtonEnter = styled.button`
   }
 `;
 export const Text = styled.p`
+  padding-bottom: 16px;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -40,6 +42,7 @@ export const Text = styled.p`
   opacity: 0.5;
 `;
 export const TextGreeting = styled.p`
+  padding-bottom: 52px;
   font-style: normal;
   font-weight: 400;
   font-size: 60px;
@@ -54,9 +57,9 @@ export const Сhanges = styled.div`
   background-position: center;
 
   color: #ff8071;
-  width: 231px;
-  height: 212.27px;
-  transform: rotate(15.96deg);
+  width: 212px;
+  height: 181px;
+  transform: rotate(15deg);
   display: flex;
   align-items: center;
 `;
@@ -92,7 +95,7 @@ export const BottomUp = styled.div`
   padding: 7px 24px 9px;
   gap: 8px;
 
-  width: 147px;
+  width: 152px;
   height: 48px;
   background: #c7e957;
   border-radius: 46px;
@@ -101,6 +104,7 @@ export const BottomUp = styled.div`
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
+  letter-spacing: -0.1px;
   text-align: center;
   color: #000000;
   :hover {
