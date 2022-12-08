@@ -1,3 +1,4 @@
+import ListItem from "../../UI Kit/listItem";
 import * as S from "./styles";
 
 const Reasons = (props) => {
@@ -6,9 +7,7 @@ const Reasons = (props) => {
       <S.Header>Подойдет для вас, если:</S.Header>
       <S.List>
         {props.reasons.map((reason) => (
-          <li key={reason}>
-            <p>{reason}</p>
-          </li>
+          <ListItem item={reason} />
         ))}
       </S.List>
     </S.Container>

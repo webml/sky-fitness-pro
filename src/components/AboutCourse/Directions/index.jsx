@@ -1,3 +1,4 @@
+import ListItem from "../../UI Kit/listItem";
 import * as S from "./styles";
 
 const Direction = (props) => {
@@ -6,9 +7,7 @@ const Direction = (props) => {
       <S.Header>Направления:</S.Header>
       <S.List>
         {props.directions.map((direction) => (
-          <li key={direction}>
-            <p>{direction}</p>
-          </li>
+          <ListItem item={direction} />
         ))}
       </S.List>
     </S.Container>
