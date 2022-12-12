@@ -3,6 +3,7 @@ import { COURSE } from "./constants";
 import AboutCourse from "./pages/AboutCourse";
 import Main from "./pages/main";
 import { Profile } from "./pages/profile";
+import { Training } from "./pages/training/training";
 
 export const AppRoutes = () => {
   return (
@@ -13,6 +14,7 @@ export const AppRoutes = () => {
         path="/AboutCourse-yoga"
         element={<AboutCourse course={COURSE} />}
       />
+      <Route path="/training" element={<Training />} />
     </Routes>
   );
 };
