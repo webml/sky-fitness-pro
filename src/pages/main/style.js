@@ -94,8 +94,7 @@ export const BottomUp = styled.div`
   align-items: center;
   padding: 7px 24px 9px;
   gap: 8px;
-
-  width: 152px;
+  width: 161px;
   height: 48px;
   background: #c7e957;
   border-radius: 46px;
