@@ -88,25 +88,19 @@ export const СoursesGallery = styled.div`
   padding-bottom: 41px;
 `;
 export const BottomUp = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 7px 24px 9px;
-  gap: 8px;
-
   width: 152px;
   height: 48px;
   background: #c7e957;
   border-radius: 46px;
-
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
   letter-spacing: -0.1px;
   text-align: center;
+  padding-top: 8px;
   color: #000000;
+  cursor: pointer;
   :hover {
     background: #daf289;
   }

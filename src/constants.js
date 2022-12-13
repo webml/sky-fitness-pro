@@ -18,3 +18,13 @@ export const COURSE = {
   description:
     "Благодаря комплексному воздействию упражнений происходит проработка всех групп мышц, тренировка суставов, улучшается циркуляция крови. Кроме того, упражнения дарят отличное настроение, заряжают бодростью и помогают противостоять стрессам.",
 };
+
+export const COURSES_API='https://sky-fitness-pro-backend-default-rtdb.europe-west1.firebasedatabase.app/'
+
+export const coursesImages = {
+  "Танцевальный фитнес":"/courses/orange.png",
+  "Стретчинг":"/courses/blue.png",
+  "Йога":"/courses/purple.png",
+  "Степ-аэробика":"/courses/green.png",
+  "Бодифлекс":"/courses/leightBlue.png"
+}
