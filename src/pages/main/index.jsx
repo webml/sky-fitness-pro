@@ -19,7 +19,7 @@ function Main() {
 
   useEffect(() => {
     dispatch(getAllCourses())
-  }, [])
+  }, [dispatch])
 
   return (
     <S.Main>
