@@ -7,7 +7,7 @@ const Reasons = (props) => {
       <S.Header>Подойдет для вас, если:</S.Header>
       <S.List>
         {props.reasons.map((reason) => (
-          <ListItem item={reason} />
+          <ListItem key={reason} item={reason} />
         ))}
       </S.List>
     </S.Container>

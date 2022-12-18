@@ -6,15 +6,19 @@ import Reasons from "../../components/AboutCourse/Reasons";
 import Directions from "../../components/AboutCourse/Directions";
 import Description from "../../components/AboutCourse/Description";
 import Apply from "../../components/AboutCourse/Apply";
+import { useSelector } from "react-redux";
+import { coursesImages } from "../../constants";
 
-const AboutCourse = (props) => {
+const AboutCourse = () => {
+  const { currentCourse } = useSelector(state => state.courses)
+
   return (
     <S.Container>
       <BlackLogo />
-      <Header courseName={props.course.name} courseImg={props.course.img} />
-      <Reasons reasons={props.course.reasons} />
-      <Directions directions={props.course.directions} />
-      <Description description={props.course.description} />
+      <Header courseName={currentCourse?.name || ''} courseImg={coursesImages[currentCourse.name]} />
+      <Reasons reasons={currentCourse?.reasons || []} />
+      <Directions directions={currentCourse?.directions || []} />
+      <Description description={currentCourse.description || []} />
       <Apply />
     </S.Container>
   );

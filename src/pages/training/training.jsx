@@ -6,7 +6,7 @@ import { ExerciseList } from "../../components/exercises/exercises";
 import { ExerciseProgress } from "../../components/exercise-progress/exercise-progress";
 
 export const Training = () => {
-
+    
     const path = {
         "section": "Красота и здоровье",
         "type": "Йога на каждый день",

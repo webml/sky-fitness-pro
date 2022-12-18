@@ -88,7 +88,17 @@ export const СoursesGallery = styled.div`
   padding-bottom: 41px;
 `;
 export const BottomUp = styled.div`
+<<<<<<< HEAD
   width: 152px;
+=======
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 24px 9px;
+  gap: 8px;
+  width: 161px;
+>>>>>>> 58cef6cc975002dd8bb94b4f97e7b952c5a0a205
   height: 48px;
   background: #c7e957;
   border-radius: 46px;

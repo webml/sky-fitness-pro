@@ -7,7 +7,10 @@ export const Container = styled.div`
   height: 310px;
   max-width: 1160px;
   border-radius: 30px;
-  background: url(${(props) => props.background});
+  background-image: url(${(props) => props.background});
+  background-position: top -100px right 48px;
+  background-repeat: no-repeat;
+  background-color: rgba(205, 205, 205, 0.1);
 `;
 
 export const Title = styled.h1`
