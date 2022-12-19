@@ -17,7 +17,7 @@ export const ExerciseList = () => {
       <S.Header>Упражнения</S.Header>
       <S.List>
         {path.map((item) => (
-          <S.ListItem>{item}</S.ListItem>
+          <S.ListItem key={item}>{item}</S.ListItem>
         ))}
       </S.List>
       <S.ProgressBtn onClick={() => setProgress(true)}>

@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import coursesSlice from "./coursesSlice";
+import coursesSlice from "./slices/coursesSlice";
+import trainingsSlice from "./slices/trainingsSlice";
+import userSlice from "./slices/userSlice";
 
 export default configureStore({
     reducer: {
         courses: coursesSlice,
+        trainings: trainingsSlice,
+        user: userSlice
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false,

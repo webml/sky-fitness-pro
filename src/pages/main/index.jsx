@@ -4,7 +4,7 @@ import Form from "../../components/Modals/form/Form";
 import LoginAndSignUp from "../../components/Modals/login&sign-up";
 import { Courses } from "../../components/Сourses";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCourses, getCourseById } from "../../store/coursesSlice";
+import { getAllCourses, getCourseById } from "../../store/slices/coursesSlice";
 
 import { NavLink } from "react-router-dom";
 

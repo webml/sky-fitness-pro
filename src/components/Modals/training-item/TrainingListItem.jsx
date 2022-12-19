@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 
 import * as S from "./styles";
 
-const TrainingListItem = ({ title, day, completed }) => {
+const TrainingListItem = ({ title, desc, completed }) => {
+
   return (
     <NavLink style={{color:'#000000', textDecoration: "none" }} to="/training">
       <S.TrainingListItem $completed={completed}>
@@ -14,8 +15,7 @@ const TrainingListItem = ({ title, day, completed }) => {
           />
         )}
         <S.ItemDescription>
-          <S.CourseTile>Йога на каждый день</S.CourseTile>
-          <S.DaySpan>{day} день</S.DaySpan>
+          <S.CourseTile>{desc}</S.CourseTile>
         </S.ItemDescription>
       </S.TrainingListItem>
     </NavLink>

@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
-import { COURSES_API } from "../constants";
+import { COURSES_API } from "../../constants";
 
 export const getAllCourses = createAsyncThunk(
     'courses/getAllCourses',
     async () => {
-        const response = await axios.get(`${COURSES_API}/courses.json`)
+        const response = await axios.get(`${COURSES_API}.json`)
         const responseArray = Object.values(response.data)
         return responseArray
     }
@@ -15,7 +15,7 @@ export const getAllCourses = createAsyncThunk(
 export const getCourseById = createAsyncThunk(
     'courses/getCourseById',
     async (id) => {
-        const response = await axios.get(`${COURSES_API}/courses/${id}.json`)
+        const response = await axios.get(`${COURSES_API}/${id}.json`)
         return response.data
     }
 )
@@ -24,7 +24,6 @@ const coursesSlice = createSlice({
     name: 'courses',
     initialState: {
         allCourses: [],
-        currentCourseId: null,
         currentCourse: {}
     },
     reducers: {
@@ -39,5 +38,4 @@ const coursesSlice = createSlice({
     }
 })
 
-export const { setCurrentCourse } = coursesSlice.actions
 export default coursesSlice.reducer

@@ -4,13 +4,18 @@ import ChangeLoginOrPassword from "../../components/Modals/change-login&password
 import Form from "../../components/Modals/form";
 import { Courses } from "../../components/Сourses";
 import TrainingChoice from "../../components/Modals/training-choice/TrainingChoice";
+import { useSelector, useDispatch } from "react-redux";
+import { getTrainingList } from "../../store/slices/trainingsSlice"
 
 import * as S from "./style";
 
 export function Profile(params) {
+  const { username, password, firstName } = useSelector(state => state.user)
   const [modalLogo, setModalLogo] = useState(false);
   const [modalPassword, setModalPassword] = useState(false);
   const [modalCorses, setModalCorses] = useState(false);
+
+  const dispatch = useDispatch()
 
   return (
     <S.Profile>
@@ -18,17 +23,17 @@ export function Profile(params) {
         <BlackLogo />
         <S.BoxMen>
           <S.Ellipse />
-          <S.Name>Сергей</S.Name>
+          <S.Name>{firstName}</S.Name>
           <S.Menu />
         </S.BoxMen>
       </S.Header>
       <S.Сontents>
         <b>Мой профиль</b>
       </S.Сontents>
-      <S.Text>Логин: sergey.petrov96</S.Text>
-      <S.Text>Пароль: 4fkhdj880d</S.Text>
+      <S.Text>Логин: {username}</S.Text>
+      <S.Text>Пароль: {password}</S.Text>
       <S.BoxButton>
-        <S.Buttom onClick={() => setModalLogo(true)}>
+        <S.Buttom onClick={() => dispatch(getTrainingList('ab1c3f'))}>
           Редактировать логин
         </S.Buttom>
         <S.Buttom onClick={() => setModalPassword(true)}>
@@ -44,37 +49,36 @@ export function Profile(params) {
           butt="yes"
           name="Йога"
           img="/courses/purple.png"
+          id='ab1c3f'
         />
-        <Courses modal={setModalCorses} butt="yes" name="Стретчинг" img="/courses/blue.png" />
-        <Courses modal={setModalCorses} butt="yes" name="Бодифлекс" img="/courses/leightBlue.png" />
+        <Courses 
+          modal={setModalCorses} 
+          butt="yes" 
+          name="Стретчинг" 
+          img="/courses/blue.png"
+          id='qw4req21'
+        />
+        <Courses 
+          modal={setModalCorses} 
+          butt="yes" 
+          name="Бодифлекс" 
+          img="/courses/leightBlue.png"
+          id='fgfr54u2' 
+        />
       </S.BoxCurses>
-      {modalLogo === true ? (
+      {modalLogo &&
         <Form
           active={setModalLogo}
           children={<ChangeLoginOrPassword save={setModalLogo} flag="login" />}
         />
-      ) : (
-        ""
-      )}
-      {modalPassword === true ? (
+      }
+      {modalPassword &&
         <Form
           active={setModalPassword}
           children={
-            <ChangeLoginOrPassword save={setModalLogo} flag="password" />
-          }
-        />
-      ) : (
-        ""
-      )}
-      {modalCorses === true ? (
-        <Form
-          children={
-            <TrainingChoice/>
-          }
-        />
-      ) : (
-        ""
-      )}
+            <ChangeLoginOrPassword save={setModalLogo} flag="password" />}
+        />}
+      {modalCorses && <Form children={<TrainingChoice/>}/>}
     </S.Profile>
   );
 }
