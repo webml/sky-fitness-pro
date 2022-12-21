@@ -12,17 +12,17 @@ const ChangeLoginOrPassword = ({ flag, save }) => {
     <Form>
       <BlackLogo />
       <S.ModalTitle>
-        {flag === "login" ? "Новый логин:" : "Новый пароль:"}
+        {flag === "Редактировать логин" ? "Новый логин:" : "Новый пароль:"}
       </S.ModalTitle>
-      {flag === "login" ? (
+        {flag === "Редактировать логин" ? 
         <FormInput type="text" placeholder="Логин" />
-      ) : (
+       : 
         <>
           <FormInput type="password" placeholder="Пароль" />
           <FormInput type="password" placeholder="Повторите пароль" />
         </>
-      )}
-      <S.ModalButtonBox onClick={()=>save(false)}>
+      }
+      <S.ModalButtonBox>
         <Button  title="Сохранить" />
       </S.ModalButtonBox>
     </Form>

@@ -1,20 +1,19 @@
+import { useEffect } from "react";
 import { BlackLogo } from "../../components/logo/blackLogo";
-// import ChangeLoginOrPassword from "../../components/Modals/change-login&password/ChangeLoginOrPassword";
-// import Form from "../../components/Modals/form";
+import ChangeLoginOrPassword from "../../components/Modals/change-login&password/ChangeLoginOrPassword";
 import { Courses } from "../../components/Сourses";
 import TrainingChoice from "../../components/Modals/training-choice/TrainingChoice";
 import { useSelector, useDispatch } from "react-redux";
 import { getCoursesList } from '../../store/slices/coursesSlice'
 import Modal from '../../components/UI Kit/modal'
-
-import * as S from "./style";
-import { useEffect } from "react";
+import Button from '../../components/UI Kit/button'
 import { coursesImages } from "../../constants";
+import * as S from "./style";
 
-export function Profile(params) {
+export function Profile() {
   const { username, password, firstName } = useSelector(state => state.user)
   const { currentCourses } = useSelector(state => state.courses)
-  const { modalActive } = useSelector(state => state.modal)
+  const { modalActive, currentModal } = useSelector(state => state.modal)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -37,12 +36,8 @@ export function Profile(params) {
       <S.Text>Логин: {username}</S.Text>
       <S.Text>Пароль: {password}</S.Text>
       <S.BoxButton>
-        <S.Buttom>
-          Редактировать логин
-        </S.Buttom>
-        <S.Buttom>
-          Редактировать пароль
-        </S.Buttom>
+        <Button title='Редактировать логин' />
+        <Button title='Редактировать пароль' />
       </S.BoxButton>
       <S.Сontents>
         <b>Мои курсы</b>
@@ -63,7 +58,11 @@ export function Profile(params) {
       </S.BoxCurses>
       {modalActive && 
         <Modal>
-          <TrainingChoice />
+          {
+            currentModal === 'Перейти →' 
+            ? <TrainingChoice /> 
+            : <ChangeLoginOrPassword flag={currentModal}/>
+          }
         </Modal>
       }
     </S.Profile>
