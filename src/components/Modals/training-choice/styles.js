@@ -33,13 +33,13 @@ export const TrainingListWrapper = styled.div`
     background: rgba(0, 0, 0, 0.15);
   }
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 15px;
 
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
   }
 `;

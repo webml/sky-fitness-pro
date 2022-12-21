@@ -62,7 +62,7 @@ export const BoxButton = styled.div`
   flex-direction: column;
   gap: 15px;
 `;
-export const BoxCurses = styled.div`
+export const BoxCurses = styled.ul`
   padding-top: 60px;
   display: flex;
   gap: 40px;

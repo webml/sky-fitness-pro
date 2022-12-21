@@ -1,12 +1,13 @@
 import * as S from "./style";
 import { getTrainingList } from "../../store/slices/trainingsSlice";
 import { useDispatch } from "react-redux";
+import { modalHandler } from '../../store/slices/modalSlice'
 
 export function Courses(props) {
   const dispatch = useDispatch()
 
   const handleClick = (id) => {
-    props.modal(true)
+    dispatch(modalHandler())
     dispatch(getTrainingList(id))
   }
 

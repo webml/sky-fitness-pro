@@ -29,7 +29,6 @@ const trainingsSlice = createSlice({
         currentTraining: null
     },
     reducers: {
-    
     },
     extraReducers: {
         [getTraining.fulfilled]:(state, action) => {
