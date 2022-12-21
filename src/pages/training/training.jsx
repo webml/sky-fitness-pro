@@ -4,8 +4,11 @@ import { TopBar } from "../../components/TopBar/TopBar";
 import { VideoPlayer } from "../../components/videoPlayer/videoPlayer";
 import { ExerciseList } from "../../components/exercises/exercises";
 import { ExerciseProgress } from "../../components/exercise-progress/exercise-progress";
+import { useSelector } from "react-redux";
+
 
 export const Training = () => {
+    const { currentTraining } = useSelector(state => state.trainings)
     
     const path = {
         "section": "Красота и здоровье",
