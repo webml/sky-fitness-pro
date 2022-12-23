@@ -19,8 +19,6 @@ const LoginAndSignUp = () => {
             {!auth && <FormInput type='password' placeholder='Повторите пароль'/>}
             <S.FormButtonBox>
                 <NavLink to="/profile" ><Button title={!auth ? 'Зарегистрироваться' : 'Войти'}/> </NavLink>
-                
-                
                 {auth && <S.SignUpButton onClick={()=>setAuth(!auth)}>Зарегистрироваться</S.SignUpButton>}
             </S.FormButtonBox>
         </Form>

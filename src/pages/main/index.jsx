@@ -1,20 +1,19 @@
-import { useState } from "react";
 import { WhiteLogo } from "../../components/logo/whiteLogo";
-import Form from "../../components/Modals/form/Form";
 import LoginAndSignUp from "../../components/Modals/login&sign-up";
 import { Courses } from "../../components/Сourses";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCourses, getCourseById } from "../../store/slices/coursesSlice";
-
 import { NavLink } from "react-router-dom";
-
 import * as S from "./style";
 import { useEffect } from "react";
 import { coursesImages } from "../../constants";
+import Modal from '../../components/UI Kit/modal'
+import { modalHandler } from '../../store/slices/modalSlice'
 
 function Main() {
   const dispatch = useDispatch()
   const { allCourses } = useSelector(state => state.courses)
+  const { modalActive } = useSelector(state => state.modal)
 
   const up = () => {
     window.scrollTo({
@@ -25,16 +24,14 @@ function Main() {
 
   useEffect(() => {
     dispatch(getAllCourses())
-  }, [dispatch])
-
-  const [modalActive, setModalActive] = useState(false);
+  }, [dispatch, modalActive])
 
   return (
     <S.Main>
       <S.Header>
         {" "}
         <WhiteLogo />{" "}
-        <S.ButtonEnter onClick={() => setModalActive(true)}>
+        <S.ButtonEnter onClick={() => dispatch(modalHandler())}>
           Войти
         </S.ButtonEnter>
       </S.Header>
@@ -71,17 +68,17 @@ function Main() {
           })
         }
       </S.СoursesGallery>
-
       <S.BottomBox>
         <S.BottomUp onClick={up}>
           <b>Наверх ↑</b>
         </S.BottomUp>
       </S.BottomBox>
-      {modalActive === true ? (
-        <Form children={<LoginAndSignUp />} />
-      ) : (
-        ""
-      )}
+      {
+        modalActive
+        && <Modal>
+          <LoginAndSignUp />
+        </Modal>
+      }
     </S.Main>
   );
 }
