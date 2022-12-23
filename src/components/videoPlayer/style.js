@@ -4,6 +4,11 @@ export const Container = styled.div`
     width: 100%;
     position: relative;
 `;
+export const iframe = styled.iframe`
+    width: 100%;
+    height: 639px;
+    border: none;
+`
 
 export const Player = styled.img`
     width: 100%;
