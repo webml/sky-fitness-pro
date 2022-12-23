@@ -16,11 +16,11 @@ const userSlice = createSlice({
         completedWorkouts: [
             "19bc41fc",
             "3c9f0628"
-        ]  
+        ] 
     },
     reducers: {
-
     }
 })
 
+export const { setUserActiveCourse } = userSlice.actions
 export default userSlice.reducer

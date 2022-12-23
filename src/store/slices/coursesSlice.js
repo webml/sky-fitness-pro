@@ -22,7 +22,6 @@ export const getCoursesList = createAsyncThunk(
     } 
 )
 
-
 export const getCourseById = createAsyncThunk(
     'courses/getCourseById',
     async (id) => {
@@ -35,7 +34,7 @@ const coursesSlice = createSlice({
     name: 'courses',
     initialState: {
         allCourses: [],
-        currentCourse: {},
+        currentCourse: null,
         currentCourses: []
     },
     reducers: {

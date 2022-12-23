@@ -7,7 +7,9 @@ import * as S from './styles'
 const Button = ({title}) => {
     const dispatch = useDispatch()
     const handleClick = () => {
-        dispatch(setCurrentModal(title))
+        if(title !== 'Сохранить'){
+            dispatch(setCurrentModal(title))
+        }
         dispatch(modalHandler())
     }
     

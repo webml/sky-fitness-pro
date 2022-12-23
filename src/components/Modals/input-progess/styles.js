@@ -16,7 +16,13 @@ export const ModalTitle = styled.h3`
     line-height: 40px;
 `
 
-export const ModalElement = styled.div`
+export const ModalContent = styled.ul`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+`
+
+export const ModalElement = styled.li`
     display: flex;
     flex-direction: column;
     gap: 12px;
