@@ -2,6 +2,7 @@ const BASE_URL = 'https://sky-fitness-pro-backend-default-rtdb.europe-west1.fire
 export const COURSES_API=`${BASE_URL}/courses`
 export const TRAININGS_API = `${BASE_URL}/workouts`
 export const EXERCISE_API = `${BASE_URL}/exercises`
+export const USER_API = `${BASE_URL}/users`
 
 export const coursesImages = {
   "Танцевальный фитнес":"/courses/orange.png",

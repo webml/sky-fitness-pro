@@ -5,24 +5,28 @@ import Button from '../../UI Kit/button'
 
 import * as S from './styles'
 import { BlackLogo } from "../../logo/blackLogo";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setIsUser } from "../../../store/slices/userSlice";
 
-const LoginAndSignUp = () => {
-    const [auth,setAuth]=useState(true)
+const LoginAndSignUp = ({isUser}) => {
+    const dispatch = useDispatch()
+
+    const handleIsUser = () => {
+        localStorage.removeItem('sky-fitness-pro-userId')
+        dispatch(setIsUser(false))
+    }
 
     return(
         <Form>
             <BlackLogo/>
-            <FormInput type='text' placeholder='Логин' />
-            <FormInput type='password' placeholder='Пароль' />
-            {!auth && <FormInput type='password' placeholder='Повторите пароль'/>}
+            <FormInput type='text' placeholder='Логин' name='login'/>
+            {!isUser && <FormInput type='email' placeholder='E-mail' name='email' />}
+            <FormInput type='password' placeholder='Пароль' name='password'/>
             <S.FormButtonBox>
-                <NavLink to="/profile" ><Button title={!auth ? 'Зарегистрироваться' : 'Войти'}/> </NavLink>
-                {auth && <S.SignUpButton onClick={()=>setAuth(!auth)}>Зарегистрироваться</S.SignUpButton>}
+                <Button title={!isUser ? 'Зарегистрироваться' : 'Войти'}/>
+                {isUser && <S.SignUpButton onClick={() => handleIsUser()}>Зарегистрироваться</S.SignUpButton>}
             </S.FormButtonBox>
         </Form>
-        
     )
 }
 

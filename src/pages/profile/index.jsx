@@ -11,7 +11,7 @@ import { coursesImages } from "../../constants";
 import * as S from "./style";
 
 export function Profile() {
-  const { username, password, firstName } = useSelector(state => state.user)
+  const { username, password, firstName } = useSelector(state => state.user.user)
   const { currentCourses } = useSelector(state => state.courses)
   const { modalActive, currentModal } = useSelector(state => state.modal)
   const dispatch = useDispatch()

@@ -4,7 +4,7 @@ import * as S from "./styles";
 
 const TrainingChoice = () => {
   const { trainingList } = useSelector(state => state.trainings)
-  const { completedWorkouts } = useSelector(state => state.user)
+  const { completedWorkouts } = useSelector(state => state.user.user)
 
   return (
     <S.TrainingChoice>

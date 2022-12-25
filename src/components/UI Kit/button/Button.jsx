@@ -1,12 +1,18 @@
 import React from "react";
 import { modalHandler, setCurrentModal } from "../../../store/slices/modalSlice";
 import { useDispatch } from "react-redux";
+import { createUser, setIsUser } from "../../../store/slices/userSlice";
 
 import * as S from './styles'
 
 const Button = ({title}) => {
     const dispatch = useDispatch()
     const handleClick = () => {
+        if(title === 'Зарегистрироваться'){
+            dispatch(createUser())
+            dispatch(setIsUser(true))
+            dispatch(modalHandler())
+        }
         if(title !== 'Сохранить'){
             dispatch(setCurrentModal(title))
         }
