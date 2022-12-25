@@ -11,7 +11,7 @@ import { coursesImages } from "../../constants";
 import * as S from "./style";
 
 export function Profile() {
-  const { username, password, firstName } = useSelector(state => state.user.user)
+  const { username, password } = useSelector(state => state.user.user)
   const { currentCourses } = useSelector(state => state.courses)
   const { modalActive, currentModal } = useSelector(state => state.modal)
   const dispatch = useDispatch()
@@ -26,7 +26,7 @@ export function Profile() {
         <BlackLogo />
         <S.BoxMen>
           <S.Ellipse />
-          <S.Name>{firstName}</S.Name>
+          <S.Name>{username}</S.Name>
           <S.Menu />
         </S.BoxMen>
       </S.Header>

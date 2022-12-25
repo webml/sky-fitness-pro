@@ -15,6 +15,15 @@ export const createUser = createAsyncThunk(
     }
 )
 
+export const getUser = createAsyncThunk(
+    'user/getUser',
+    async () => {
+        const userId = localStorage.getItem('sky-fitness-pro-userId')
+        const response = await axios.get(`${USER_API}/${userId}.json`)
+        return response.data
+    }
+)
+
 export 
 
 const userSlice = createSlice({
@@ -22,21 +31,11 @@ const userSlice = createSlice({
     initialState: {
         userName: null,
         userEmail: null,
-        userPassword: null, 
-        user: {
-            username: "sergey.petrov96",
-            firstName: "Сергей",
-            lastName: "Петров",
-            email: "sergey.petrov96@mail.ru",
-            password: "4fkhdj880d",
-            courses:{
-                ab1c3f: {},
-                fgfr54u2: {},
-                qw4req21: {}
-            }
-        },
-        auth: true,
-        isUser: false  
+        userPassword: null,
+        user: {},
+        isUser: false,
+        message: '',
+        status: ''  
     },
     reducers: {
         setUserName(state, action) {
@@ -56,6 +55,23 @@ const userSlice = createSlice({
         [createUser.fulfilled]: (_, action) => {
             const { name } = action.payload.data
             localStorage.setItem('sky-fitness-pro-userId', name)
+        },
+        [getUser.fulfilled]: (state, action) => {
+            const { username, password } = action.payload
+            if(state.userName !== username || state.userPassword !== password){
+                state.message = 'Неправильный логин или пароль'
+                state.status = 'error'
+                console.log('Неправильный логин или пароль');
+                return
+            }
+            if(state.userName === username && state.userPassword === password){
+                state.auth = true
+                const entries = Object.entries(action.payload)
+                entries.forEach(arr => {
+                    const [key, value] = arr
+                    state.user[key] = value
+                })
+            }
         }
     }
 })
