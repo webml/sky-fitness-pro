@@ -2,12 +2,9 @@ import React from "react";
 import { modalHandler, setCurrentModal } from "../../../store/slices/modalSlice";
 import { useDispatch } from "react-redux";
 import { createUser, getUser, setIsUser } from "../../../store/slices/userSlice";
-
 import * as S from './styles'
-import { useNavigate } from "react-router-dom";
 
 const Button = ({title}) => {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     
     const handleClick = () => {
@@ -18,7 +15,6 @@ const Button = ({title}) => {
         }
         if(title === 'Войти') {
             dispatch(getUser())
-            navigate('/profile')
             dispatch(modalHandler())
             return
         }

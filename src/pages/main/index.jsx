@@ -10,12 +10,13 @@ import { coursesImages } from "../../constants";
 import Modal from '../../components/UI Kit/modal'
 import { modalHandler } from '../../store/slices/modalSlice'
 import { setIsUser } from "../../store/slices/userSlice";
+import { UserProfile } from '../../components/user-profile/userProfile'
 
 function Main() {
   const dispatch = useDispatch()
   const { allCourses } = useSelector(state => state.courses)
   const { modalActive } = useSelector(state => state.modal)
-  const { isUser } = useSelector(state => state.user)
+  const { isUser, auth } = useSelector(state => state.user)
 
   const up = () => {
     window.scrollTo({
@@ -36,9 +37,14 @@ function Main() {
       <S.Header>
         {" "}
         <WhiteLogo />{" "}
-        <S.ButtonEnter onClick={() => dispatch(modalHandler())}>
-          Войти
-        </S.ButtonEnter>
+        {
+          !auth ? 
+          <S.ButtonEnter onClick={() => dispatch(modalHandler())}>
+            Войти
+          </S.ButtonEnter>
+          : <UserProfile />
+        }
+        
       </S.Header>
       <S.Box>
         <div>

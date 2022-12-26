@@ -24,8 +24,6 @@ export const getUser = createAsyncThunk(
     }
 )
 
-export 
-
 const userSlice = createSlice({
     name: 'user',
     initialState: {
@@ -35,7 +33,8 @@ const userSlice = createSlice({
         user: {},
         isUser: false,
         message: '',
-        status: ''  
+        status: '',
+        auth: false
     },
     reducers: {
         setUserName(state, action) {
@@ -49,6 +48,9 @@ const userSlice = createSlice({
         },
         setIsUser(state, action) {
             state.isUser = action.payload
+        },
+        updateUserInfo(state) {
+
         }
     },
     extraReducers: {
@@ -62,15 +64,12 @@ const userSlice = createSlice({
                 state.message = 'Неправильный логин или пароль'
                 state.status = 'error'
                 console.log('Неправильный логин или пароль');
+                state.auth = false
                 return
             }
             if(state.userName === username && state.userPassword === password){
                 state.auth = true
-                const entries = Object.entries(action.payload)
-                entries.forEach(arr => {
-                    const [key, value] = arr
-                    state.user[key] = value
-                })
+                state.user = JSON.parse(JSON.stringify(action.payload))
             }
         }
     }

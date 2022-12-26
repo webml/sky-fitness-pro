@@ -9,6 +9,7 @@ import Modal from '../../components/UI Kit/modal'
 import Button from '../../components/UI Kit/button'
 import { coursesImages } from "../../constants";
 import * as S from "./style";
+import { UserProfile } from "../../components/user-profile/userProfile";
 
 export function Profile() {
   const { username, password } = useSelector(state => state.user.user)
@@ -25,9 +26,7 @@ export function Profile() {
       <S.Header>
         <BlackLogo />
         <S.BoxMen>
-          <S.Ellipse />
-          <S.Name>{username}</S.Name>
-          <S.Menu />
+          <UserProfile />
         </S.BoxMen>
       </S.Header>
       <S.Сontents>
