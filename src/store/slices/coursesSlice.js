@@ -16,7 +16,7 @@ export const getCoursesList = createAsyncThunk(
     async (_, { getState }) => {
         const state = getState()
         const currentCourses = await Promise.all(
-            state.user.user.courses.map(course => axios.get(`${COURSES_API}/${course}.json`))
+            state.user.userCourses.map(course => axios.get(`${COURSES_API}/${course}.json`))
         )
         return currentCourses.map(res => res.data)
     } 

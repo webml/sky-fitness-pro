@@ -25,7 +25,7 @@ const AboutCourse = () => {
           <Reasons reasons={currentCourse?.reasons} />
           <Directions directions={currentCourse?.directions} />
           <Description description={currentCourse?.description} />
-          <Apply />
+          <Apply id={currentCourse?.CO_id}/>
         </>
       }
     </S.Container>

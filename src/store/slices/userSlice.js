@@ -24,6 +24,21 @@ export const getUser = createAsyncThunk(
     }
 )
 
+export const updateUserCourses = createAsyncThunk(
+    'user/updateUserCourses',
+    async (_, {getState}) => {
+        const userId = localStorage.getItem('sky-fitness-pro-userId')
+        const state = getState()
+        const updatedCourses = state.user.userCourses.reduce((acc, el, i) => {
+            acc[i] = el
+            return acc
+        }, {})
+        const response = await axios.patch(`${USER_API}/${userId}/courses.json`, updatedCourses)
+        return response.data
+    }
+
+)
+
 const userSlice = createSlice({
     name: 'user',
     initialState: {
@@ -34,7 +49,8 @@ const userSlice = createSlice({
         isUser: false,
         message: '',
         status: '',
-        auth: false
+        auth: false,
+        userCourses: []
     },
     reducers: {
         setUserName(state, action) {
@@ -49,8 +65,12 @@ const userSlice = createSlice({
         setIsUser(state, action) {
             state.isUser = action.payload
         },
-        updateUserInfo(state) {
-
+        addCourse(state, action) {
+            const check = state.userCourses.filter(el => el === action.payload)
+            if(check.length) {
+                return
+            }
+            state.userCourses.push(action.payload)   
         }
     },
     extraReducers: {
@@ -70,10 +90,21 @@ const userSlice = createSlice({
             if(state.userName === username && state.userPassword === password){
                 state.auth = true
                 state.user = JSON.parse(JSON.stringify(action.payload))
+                if(action.payload.courses) {
+                    state.userCourses = Object.values(action.payload.courses)
+                } 
             }
+        },
+        [updateUserCourses.pending]: (state) => {
+            state.status = 'loading'
+        },
+        [updateUserCourses.fulfilled]: (state, action) => {
+            const arr = Object.values(action.payload)
+            state.user.courses = arr
+            state.status = 'fulfilled'
         }
     }
 })
 
-export const { setUserEmail, setUserName, setUserPassword, setIsUser } = userSlice.actions
+export const { setUserEmail, setUserName, setUserPassword, setIsUser, addCourse } = userSlice.actions
 export default userSlice.reducer
