@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { BlackLogo } from "../../components/logo/blackLogo";
 import ChangeLoginOrPassword from "../../components/Modals/change-login&password/ChangeLoginOrPassword";
-import Form from "../../components/Modals/form";
 import { Courses } from "../../components/Сourses";
 import TrainingChoice from "../../components/Modals/training-choice/TrainingChoice";
-
+import { useSelector, useDispatch } from "react-redux";
+import { getCoursesList } from '../../store/slices/coursesSlice'
+import Modal from '../../components/UI Kit/modal'
+import Button from '../../components/UI Kit/button'
+import { coursesImages } from "../../constants";
 import * as S from "./style";
 
-export function Profile(params) {
-  const [modalLogo, setModalLogo] = useState(false);
-  const [modalPassword, setModalPassword] = useState(false);
-  const [modalCorses, setModalCorses] = useState(false);
+export function Profile() {
+  const { username, password, firstName } = useSelector(state => state.user)
+  const { currentCourses } = useSelector(state => state.courses)
+  const { modalActive, currentModal } = useSelector(state => state.modal)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getCoursesList())
+  },[dispatch])
 
   return (
     <S.Profile>
@@ -18,63 +26,45 @@ export function Profile(params) {
         <BlackLogo />
         <S.BoxMen>
           <S.Ellipse />
-          <S.Name>Сергей</S.Name>
+          <S.Name>{firstName}</S.Name>
           <S.Menu />
         </S.BoxMen>
       </S.Header>
       <S.Сontents>
         <b>Мой профиль</b>
       </S.Сontents>
-      <S.Text>Логин: sergey.petrov96</S.Text>
-      <S.Text>Пароль: 4fkhdj880d</S.Text>
+      <S.Text>Логин: {username}</S.Text>
+      <S.Text>Пароль: {password}</S.Text>
       <S.BoxButton>
-        <S.Buttom onClick={() => setModalLogo(true)}>
-          Редактировать логин
-        </S.Buttom>
-        <S.Buttom onClick={() => setModalPassword(true)}>
-          Редактировать пароль
-        </S.Buttom>
+        <Button title='Редактировать логин' />
+        <Button title='Редактировать пароль' />
       </S.BoxButton>
       <S.Сontents>
         <b>Мои курсы</b>
       </S.Сontents>
       <S.BoxCurses>
-        <Courses
-          modal={setModalCorses}
-          butt="yes"
-          name="Йога"
-          img="/courses/purple.png"
-        />
-        <Courses modal={setModalCorses} butt="yes" name="Стретчинг" img="/courses/blue.png" />
-        <Courses modal={setModalCorses} butt="yes" name="Бодифлекс" img="/courses/leightBlue.png" />
+        {
+          currentCourses.map(course => (
+            <li key={course.CO_id}>
+              <Courses 
+                name={course.name}
+                img={coursesImages[course.name]}
+                butt="yes"
+                id={course.CO_id}
+              />
+            </li>
+          ))
+        }
       </S.BoxCurses>
-      {modalLogo === true ? (
-        <Form
-          active={setModalLogo}
-          children={<ChangeLoginOrPassword save={setModalLogo} flag="login" />}
-        />
-      ) : (
-        ""
-      )}
-      {modalPassword === true ? (
-        <Form
-          active={setModalPassword}
-          children={
-            <ChangeLoginOrPassword save={setModalLogo} flag="password" />
+      {modalActive && 
+        <Modal>
+          {
+            currentModal === 'Перейти →' 
+            ? <TrainingChoice /> 
+            : <ChangeLoginOrPassword flag={currentModal}/>
           }
-        />
-      ) : (
-        ""
-      )}
-      {modalCorses === true ? (
-        <Form
-          children={
-            <TrainingChoice/>
-          }
-        />
-      ) : (
-        ""
-      )}
+        </Modal>
+      }
     </S.Profile>
   );
 }

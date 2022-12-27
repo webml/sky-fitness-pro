@@ -20,26 +20,20 @@ export const TrainingChoiceTitle = styled.h2`
 
 export const TrainingListWrapper = styled.div`
   overflow-y: scroll;
-  padding-right: 24px;
+  padding-right: 18px;
   position: absolute;
   top: 116px;
   left: 83px;
   height: 74%;
 
-  .os-theme-dark.os-scrollbar > .os-scrollbar-track,
-  .os-theme-dark.os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle,
-  .os-theme-light.os-scrollbar > .os-scrollbar-track,
-  .os-theme-light.os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle {
-    background: rgba(0, 0, 0, 0.15);
-  }
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
 
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
   }
 `;

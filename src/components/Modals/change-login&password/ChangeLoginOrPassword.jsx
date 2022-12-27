@@ -6,23 +6,24 @@ import Button from "../../UI Kit/button";
 import * as S from "./styles";
 import { BlackLogo } from "../../logo/blackLogo";
 
-const ChangeLoginOrPassword = ({ flag, save }) => {
+const ChangeLoginOrPassword = ({ flag }) => {
   
   return (
     <Form>
       <BlackLogo />
       <S.ModalTitle>
-        {flag === "login" ? "Новый логин:" : "Новый пароль:"}
+        {flag === "Редактировать логин" ? "Новый логин:" : "Новый пароль:"}
       </S.ModalTitle>
-      {flag === "login" ? (
-        <FormInput type="text" placeholder="Логин" />
-      ) : (
-        <>
-          <FormInput type="password" placeholder="Пароль" />
-          <FormInput type="password" placeholder="Повторите пароль" />
-        </>
-      )}
-      <S.ModalButtonBox onClick={()=>save(false)}>
+        {
+          flag === "Редактировать логин" ? 
+            <FormInput type="text" placeholder="Логин" />
+            : 
+            <>
+              <FormInput type="password" placeholder="Пароль" />
+              <FormInput type="password" placeholder="Повторите пароль" />
+            </>
+        }
+      <S.ModalButtonBox>
         <Button  title="Сохранить" />
       </S.ModalButtonBox>
     </Form>

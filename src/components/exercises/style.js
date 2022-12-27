@@ -6,10 +6,11 @@ export const Main = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 10px;
 `;
 
 export const  Header = styled.header`
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     font-size: 32px;
     font-weight: 400;
 

@@ -15,4 +15,8 @@ export const FormInput = styled.input`
         letter-spacing: -0.05px;
         color: #D0CECE;
     }
+
+    :focus {
+        border-bottom: 1px solid #D0CECE;
+    }
 `

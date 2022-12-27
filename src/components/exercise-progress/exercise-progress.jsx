@@ -1,23 +1,44 @@
 import React from "react";
 import * as S from "./style";
+import { useSelector } from 'react-redux'
+import { colors, createGradient } from "../../constants";
 
 export const ExerciseProgress = () => {
+    const { exercisesList, currentTrainingNumber } = useSelector(state => state.trainings)
+
+    const setProgressBackground = (num, percent) => {
+        const { color1, color2 } = colors[num + 1]
+        return createGradient(color1, color2, percent)
+    }
+
     return(
         <S.Main>
-            <S.Header>Мой прогресс по тренировке 2:</S.Header>
+            <S.Header>Мой прогресс по тренировке {currentTrainingNumber}:</S.Header>
             <S.List>
                 <S.ListName>
-                    <S.ListNameItem>Наклон вперед</S.ListNameItem>
-                    <S.ListNameItem>Наклон назад</S.ListNameItem>
-                    <S.ListNameItem>Поднятие ног, согнутых в коленях</S.ListNameItem>
+                    {
+                        exercisesList.map(el => {
+                            return (
+                                <S.ListNameItem key={el.EX_id}>{el.title}</S.ListNameItem>
+                            )
+                        })
+                    }
                 </S.ListName>
                 <S.ListProgress>
-                    <S.ListProgressItem background='linear-gradient(to right,#565EEF 0%,#565EEF 45%,#EDECFF 45%,#EDECFF 100%)' >45%</S.ListProgressItem>
-                    <S.ListProgressItem background='linear-gradient(to right,#FF6D00 0%,#FF6D00 45%,#FFF2E0 45%,#FFF2E0 100%)' >45%</S.ListProgressItem>
-                    <S.ListProgressItem background='linear-gradient(to right,#9A48F1 0%,#9A48F1 45%,#F9EBFF 45%,#F9EBFF 100%)' >45%</S.ListProgressItem>
+                    {
+                        exercisesList.map((el, i) => {
+                            return (
+                                <S.ListProgressItem 
+                                    key={el.title}
+                                    background={setProgressBackground(i, 60)}
+                                >
+                                    45%
+                                </S.ListProgressItem>
+                            )
+                        })
+                    }
                 </S.ListProgress>
             </S.List>
         </S.Main>
-        
     )
 }

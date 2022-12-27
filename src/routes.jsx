@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "./components/Protectet-eout/Protectet-eout";
-import { COURSE } from "./constants";
 import AboutCourse from "./pages/AboutCourse";
 import Main from "./pages/main";
 import { NotFound } from "./pages/not-found/NotFound";
@@ -14,7 +13,7 @@ export const AppRoutes = () => {
       <Route path="/" element={<Main />} />
       <Route
           path="/AboutCourse"
-          element={<AboutCourse course={COURSE} />}
+          element={<AboutCourse />}
         />
       <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
         <Route path="/profile" element={<Profile />} />

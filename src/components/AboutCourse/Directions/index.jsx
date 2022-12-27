@@ -7,7 +7,7 @@ const Direction = (props) => {
       <S.Header>Направления:</S.Header>
       <S.List>
         {props.directions.map((direction) => (
-          <ListItem item={direction} />
+          <ListItem key={direction} item={direction} />
         ))}
       </S.List>
     </S.Container>

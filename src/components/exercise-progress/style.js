@@ -15,7 +15,7 @@ export const Header = styled.header`
     padding-left: 80px;
     padding-right: 80px;
 `;
-export const ListNameItem = styled.div`
+export const ListNameItem = styled.li`
     font-size: 24px;
     font-weight: 400;
     padding-right: 72px;
@@ -25,7 +25,7 @@ export const List = styled.div`
     flex-direction: row;
     padding-bottom: 30px;
 `;
-export const ListName = styled.div`
+export const ListName = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -34,7 +34,7 @@ export const ListName = styled.div`
     flex-wrap: wrap;
     padding-left: 44px;
 `;
-export const ListProgress = styled.div`
+export const ListProgress = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 26px;
@@ -43,7 +43,7 @@ export const ListProgress = styled.div`
     flex-wrap: wrap;
     padding-right: 55px;
 `;
-export const ListProgressItem  = styled.div`
+export const ListProgressItem  = styled.li`
     width: 278px;
     background: ${(props) => props.background};
     border: 2px solid #565EEF;

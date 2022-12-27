@@ -28,6 +28,13 @@ const GlobalStyles = createGlobalStyle`
             outline: none;
         }
     }
+
+    input {
+        :focus {
+            outline: none;
+            border: none;
+        }
+    }
 `;
 
 export default GlobalStyles;

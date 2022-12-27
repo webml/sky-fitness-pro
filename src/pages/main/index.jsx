@@ -3,18 +3,32 @@ import { WhiteLogo } from "../../components/logo/whiteLogo";
 import Form from "../../components/Modals/form/Form";
 import LoginAndSignUp from "../../components/Modals/login&sign-up";
 import { Courses } from "../../components/Сourses";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllCourses, getCourseById } from "../../store/slices/coursesSlice";
+
 import { NavLink } from "react-router-dom";
 
 import * as S from "./style";
+import { useEffect } from "react";
+import { coursesImages } from "../../constants";
 
 function Main() {
+  const dispatch = useDispatch()
+  const { allCourses } = useSelector(state => state.courses)
+
   const up = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
+
+  useEffect(() => {
+    dispatch(getAllCourses())
+  }, [dispatch])
+
   const [modalActive, setModalActive] = useState(false);
+
   return (
     <S.Main>
       <S.Header>
@@ -39,21 +53,23 @@ function Main() {
         </div>
       </S.Box>
       <S.СoursesGallery>
-        <NavLink style={{ textDecoration: "none" }} to="/AboutCourse">
-          <Courses name="Йога" img="/courses/purple.png" />
-        </NavLink>
-        <NavLink style={{ textDecoration: "none" }} to="/AboutCourse">
-          <Courses name="Стретчинг" img="/courses/blue.png" />
-        </NavLink>
-        <NavLink style={{ textDecoration: "none" }} to="/AboutCourse">
-          <Courses name="Танцевальный фитнес" img="/courses/orange.png" />
-        </NavLink>
-        <NavLink style={{ textDecoration: "none" }} to="/AboutCourse">
-          <Courses name="Степ-аэробика" img="/courses/green.png" />
-        </NavLink>
-        <NavLink style={{ textDecoration: "none" }} to="/AboutCourse">
-          <Courses name="Бодифлекс" img="/courses/leightBlue.png" />
-        </NavLink>
+        {
+          allCourses.map(course => {
+            return (
+              <NavLink 
+                to={'/AboutCourse'}
+                key={course.CO_id}
+                onClick={() => dispatch(getCourseById(course.CO_id))}
+              >
+                <Courses 
+                  name={course.name}
+                  img={coursesImages[course.name]}
+                  id={course.CO_id} 
+                />
+              </NavLink>
+            )
+          })
+        }
       </S.СoursesGallery>
 
       <S.BottomBox>

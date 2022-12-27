@@ -54,8 +54,5 @@ export const StyledSpan = styled.span`
 
 
 export const CourseTile = styled(DaySpan)`
-    ::after {
-        content: "/";
-        margin: 0px 0.2rem;
-    }
+
 `

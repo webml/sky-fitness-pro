@@ -1,33 +1,27 @@
-import React from "react";
-import { useState } from "react";
-import Form from "../Modals/form";
-import InputProgress from "../Modals/input-progess/InputProgress";
+import Button from "../UI Kit/button";
+import { useSelector } from 'react-redux'
 
 import * as S from "./style";
 
 export const ExerciseList = () => {
-  const [progress, setProgress] = useState(false);
-  const path = [
-    "Наклон вперед (10 повторений)",
-    "Наклон назад (10 повторений)",
-    "Поднятие ног, согнутых в коленях (5 повторений)",
-  ];
+  const { exercisesList } = useSelector(state => state.trainings)
+
   return (
-    <S.Main>
-      <S.Header>Упражнения</S.Header>
-      <S.List>
-        {path.map((item) => (
-          <S.ListItem>{item}</S.ListItem>
-        ))}
-      </S.List>
-      <S.ProgressBtn onClick={() => setProgress(true)}>
-        Заполнить свой прогресс
-      </S.ProgressBtn>
-      {progress === true ? (
-        <Form  children={<InputProgress set={setProgress} />} />
-      ) : (
-        ""
-      )}
-    </S.Main>
+    <>
+      <S.Main>
+        <S.Header>Упражнения</S.Header>
+        <S.List >
+          {exercisesList.map((item) => (
+            <S.ListItem 
+              key={item.EX_id} 
+            >
+              <span>{item.title}</span>
+              <p>{`(${item.count} повторений)`}</p>
+            </S.ListItem>
+          ))}
+        </S.List>
+        <Button title='Заполнить свой прогресс'/>
+      </S.Main>
+    </>
   );
 };
