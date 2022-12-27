@@ -32,8 +32,8 @@ export function Profile() {
       <S.Сontents>
         <b>Мой профиль</b>
       </S.Сontents>
-      <S.Text>Логин: {user.username}</S.Text>
-      <S.Text>Пароль: {user.password}</S.Text>
+      {status !== 'loading' && <S.Text>Логин: {user.username}</S.Text>}
+      {status !== 'loading' && <S.Text>Пароль: {user.password}</S.Text>}
       <S.BoxButton>
         <Button title='Редактировать логин' />
         <Button title='Редактировать пароль' />

@@ -6,7 +6,7 @@ export const createUser = createAsyncThunk(
     'user/createUser',
     async (_, {getState}) => {
         const state = getState()
-        const response = axios.post(`${USER_API}.json`, {
+        const response = await axios.post(`${USER_API}.json`, {
             username: state.user.userName,
             email: state.user.userEmail,
             password: state.user.userPassword
@@ -20,6 +20,19 @@ export const getUser = createAsyncThunk(
     async () => {
         const userId = localStorage.getItem('sky-fitness-pro-userId')
         const response = await axios.get(`${USER_API}/${userId}.json`)
+        return response.data
+    }
+)
+
+export const updateUserData = createAsyncThunk(
+    'user/updateUserData',
+    async (_, {getState}) => {
+        const userId = localStorage.getItem('sky-fitness-pro-userId')
+        const state = getState()
+        const response = await axios.patch(`${USER_API}/${userId}.json`, {
+            username: state.user.userName,
+            password: state.user.userPassword
+        })
         return response.data
     }
 )
@@ -50,7 +63,7 @@ const userSlice = createSlice({
         message: '',
         status: '',
         auth: false,
-        userCourses: []
+        userCourses: [],
     },
     reducers: {
         setUserName(state, action) {
@@ -101,6 +114,15 @@ const userSlice = createSlice({
         [updateUserCourses.fulfilled]: (state, action) => {
             const arr = Object.values(action.payload)
             state.user.courses = arr
+            state.status = 'fulfilled'
+        },
+        [updateUserData.pending]: (state) => {
+            state.status = 'loading'
+        },
+        [updateUserData.fulfilled]: (state, action) => {
+            const { username, password } = action.payload
+            state.userName = username
+            state.userPassword = password
             state.status = 'fulfilled'
         }
     }

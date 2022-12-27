@@ -1,7 +1,7 @@
 import React from "react";
 import { modalHandler, setCurrentModal } from "../../../store/slices/modalSlice";
 import { useDispatch } from "react-redux";
-import { createUser, getUser, setIsUser, addCourse, updateUserCourses } from "../../../store/slices/userSlice";
+import { createUser, getUser, setIsUser, addCourse, updateUserCourses, updateUserData } from "../../../store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import * as S from './styles'
 
@@ -10,6 +10,12 @@ const Button = ({title, id=null}) => {
     const navigate = useNavigate()
     
     const handleClick = () => {
+        if(title !== 'Сохранить'){
+            dispatch(setCurrentModal(title))
+        }
+        if(title === 'Сохранить') {
+            dispatch(updateUserData())
+        }
         if(title === 'Зарегистрироваться'){
             dispatch(createUser())
             dispatch(setIsUser(true))
@@ -19,9 +25,6 @@ const Button = ({title, id=null}) => {
             dispatch(getUser())
             dispatch(modalHandler())
             return
-        }
-        if(title !== 'Сохранить'){
-            dispatch(setCurrentModal(title))
         }
         if(title === 'Записаться на тренировку') {
             dispatch(addCourse(id))
