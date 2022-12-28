@@ -1,6 +1,10 @@
 import React from "react";
-import { modalHandler, setCurrentModal } from "../../../store/slices/modalSlice";
+import {
+  modalHandler,
+  setCurrentModal,
+} from "../../../store/slices/modalSlice";
 import { useDispatch } from "react-redux";
+
 import { createUser, getUser, setIsUser, addCourse, updateUserCourses, updateUserData } from "../../../store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import * as S from './styles'
@@ -43,5 +47,21 @@ const Button = ({title, id=null}) => {
         </S.Button>
     )
 }
+=======
 
-export default Button
+import * as S from "./styles";
+
+const Button = ({ title, onClick }) => {
+  //   const dispatch = useDispatch();
+  //   const handleClick = () => {
+  //     if (title !== "Сохранить") {
+  //       dispatch(setCurrentModal(title));
+  //     }
+  //     dispatch(modalHandler());
+  //   };
+
+
+  return <S.Button onClick={onClick}>{title}</S.Button>;
+};
+
+export default Button;

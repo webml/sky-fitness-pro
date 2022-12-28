@@ -2,7 +2,8 @@ import React from "react";
 import { setUserEmail, setUserPassword, setUserName } from "../../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
 
-import * as S from './styles'
+import * as S from "./styles";
+
 
 const FormInput = ({name, type, placeholder}) => {
     const dispatch = useDispatch()
@@ -29,4 +30,9 @@ const FormInput = ({name, type, placeholder}) => {
     )
 }
 
-export default FormInput
+const FormInput = ({ type, placeholder }) => {
+  return <S.FormInput type={type} placeholder={placeholder} />;
+};
+
+
+export default FormInput;

@@ -63,7 +63,10 @@ const userSlice = createSlice({
         message: '',
         status: '',
         auth: false,
+
         userCourses: []
+
+
     },
     reducers: {
         setUserName(state, action) {

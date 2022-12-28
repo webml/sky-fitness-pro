@@ -66,6 +66,7 @@ export const BoxCurses = styled.ul`
   padding-top: 60px;
   display: flex;
   gap: 40px;
+  list-style-type: none;
 `;
 export const Ellipse = styled.div`
   width: 50px;
