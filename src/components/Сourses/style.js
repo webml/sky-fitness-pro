@@ -12,7 +12,7 @@ export const Box = styled.div`
   background-size: cover;
   min-width: 360px;
   height: 480px;
-
+  list-style-type: none;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
