@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 
 import Form from "../form";
-import FormInput from "../form-input";
+import { FormInput } from "../form-input/styles";
 import Button from "../../UI Kit/button";
 import { BlackLogo } from "../../logo/blackLogo";
 
@@ -25,6 +25,9 @@ const LoginAndSignUp = () => {
 
   const authUser = () => {
     const auth = getAuth();
+
+    console.log(email);
+    console.log(password);
 
     if (!isAuth) {
       createUserWithEmailAndPassword(auth, email, password)
