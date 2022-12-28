@@ -7,17 +7,15 @@ import { Profile } from "./pages/profile";
 import { Training } from "./pages/training/training";
 
 export const AppRoutes = () => {
-  const user = true
+  const user = true;
+
   return (
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route
-          path="/AboutCourse"
-          element={<AboutCourse />}
-        />
+      <Route path="/AboutCourse" element={<AboutCourse />} />
       <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
         <Route path="/profile" element={<Profile />} />
-        
+
         <Route path="/training" element={<Training />} />
       </Route>
       <Route path="*" element={<NotFound />} />
