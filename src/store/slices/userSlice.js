@@ -63,7 +63,7 @@ const userSlice = createSlice({
         message: '',
         status: '',
         auth: false,
-        userCourses: [],
+        userCourses: []
     },
     reducers: {
         setUserName(state, action) {
@@ -120,9 +120,9 @@ const userSlice = createSlice({
             state.status = 'loading'
         },
         [updateUserData.fulfilled]: (state, action) => {
-            const { username, password } = action.payload
-            state.userName = username
-            state.userPassword = password
+            console.log(action.payload.username);
+            state.userName = action.payload.username
+            state.userPassword = action.payload.password
             state.status = 'fulfilled'
         }
     }
