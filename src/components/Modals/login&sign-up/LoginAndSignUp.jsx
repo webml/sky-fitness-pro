@@ -11,38 +11,9 @@ import { FormInput } from "../form-input/styles";
 import Button from "../../UI Kit/button";
 import { BlackLogo } from "../../logo/blackLogo";
 
-import { useDispatch } from "react-redux";
-import { setIsUser } from "../../../store/slices/userSlice";
-
-const LoginAndSignUp = ({isUser}) => {
-    const dispatch = useDispatch()
-
-    const handleIsUser = () => {
-        localStorage.removeItem('sky-fitness-pro-userId')
-        dispatch(setIsUser(false))
-    }
-
-
-    return(
-        <Form>
-            <BlackLogo/>
-            <FormInput type='text' placeholder='Логин' name='login'/>
-            {!isUser && <FormInput type='email' placeholder='E-mail' name='email' />}
-            <FormInput type='password' placeholder='Пароль' name='password'/>
-            <S.FormButtonBox>
-                <Button title={!isUser ? 'Зарегистрироваться' : 'Войти'}/>
-                {isUser && <S.SignUpButton onClick={() => handleIsUser()}>Зарегистрироваться</S.SignUpButton>}
-            </S.FormButtonBox>
-        </Form>
-    )
-}
-
-export default LoginAndSignUp
-=======
-
 import * as S from "./styles";
 
-import { setUser } from "../../../store/slices/userSlice";
+import { setUser } from "../../../store/slices/authSlice";
 
 const LoginAndSignUp = () => {
   const [isAuth, setIsAuth] = useState(true);
@@ -120,4 +91,3 @@ const LoginAndSignUp = () => {
 };
 
 export default LoginAndSignUp;
-
