@@ -1,44 +1,132 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { USER_API } from "../../constants";
+import axios from "axios";
 
-const initialState = {
-  email: null,
-  token: null,
-  id: null,
-};
+export const createUser = createAsyncThunk(
+    'user/createUser',
+    async (_, {getState}) => {
+        const state = getState()
+        const response = await axios.post(`${USER_API}.json`, {
+            username: state.user.userName,
+            email: state.user.userEmail,
+            password: state.user.userPassword
+        })
+        return response
+    }
+)
+
+export const getUser = createAsyncThunk(
+    'user/getUser',
+    async () => {
+        const userId = localStorage.getItem('sky-fitness-pro-userId')
+        const response = await axios.get(`${USER_API}/${userId}.json`)
+        return response.data
+    }
+)
+
+export const updateUserData = createAsyncThunk(
+    'user/updateUserData',
+    async (_, {getState}) => {
+        const userId = localStorage.getItem('sky-fitness-pro-userId')
+        const state = getState()
+        const response = await axios.patch(`${USER_API}/${userId}.json`, {
+            username: state.user.userName,
+            password: state.user.userPassword
+        })
+        return response.data
+    }
+)
+
+export const updateUserCourses = createAsyncThunk(
+    'user/updateUserCourses',
+    async (_, {getState}) => {
+        const userId = localStorage.getItem('sky-fitness-pro-userId')
+        const state = getState()
+        const updatedCourses = state.user.userCourses.reduce((acc, el, i) => {
+            acc[i] = el
+            return acc
+        }, {})
+        const response = await axios.patch(`${USER_API}/${userId}/courses.json`, updatedCourses)
+        return response.data
+    }
+
+)
 
 const userSlice = createSlice({
-  name: "user",
-  initialState,
-  reducers: {
-    setUser(state, action) {
-      state.email = action.payload.email;
-      state.token = action.payload.token;
-      state.id = action.payload.id;
+    name: 'user',
+    initialState: {
+        userName: null,
+        userEmail: null,
+        userPassword: null,
+        user: {},
+        isUser: false,
+        message: '',
+        status: '',
+        auth: false,
+        userCourses: [],
     },
-    removeUser(state) {
-      state.email = null;
-      state.token = null;
-      state.id = null;
+    reducers: {
+        setUserName(state, action) {
+            state.userName = action.payload
+        },
+        setUserEmail(state, action) {
+            state.userEmail = action.payload
+        },
+        setUserPassword(state, action) {
+            state.userPassword = action.payload
+        },
+        setIsUser(state, action) {
+            state.isUser = action.payload
+        },
+        addCourse(state, action) {
+            const check = state.userCourses.filter(el => el === action.payload)
+            if(check.length) {
+                return
+            }
+            state.userCourses.push(action.payload)   
+        }
     },
-  },
-});
+    extraReducers: {
+        [createUser.fulfilled]: (_, action) => {
+            const { name } = action.payload.data
+            localStorage.setItem('sky-fitness-pro-userId', name)
+        },
+        [getUser.fulfilled]: (state, action) => {
+            const { username, password } = action.payload
+            if(state.userName !== username || state.userPassword !== password){
+                state.message = 'Неправильный логин или пароль'
+                state.status = 'error'
+                console.log('Неправильный логин или пароль');
+                state.auth = false
+                return
+            }
+            if(state.userName === username && state.userPassword === password){
+                state.auth = true
+                state.user = JSON.parse(JSON.stringify(action.payload))
+                if(action.payload.courses) {
+                    state.userCourses = Object.values(action.payload.courses)
+                } 
+            }
+        },
+        [updateUserCourses.pending]: (state) => {
+            state.status = 'loading'
+        },
+        [updateUserCourses.fulfilled]: (state, action) => {
+            const arr = Object.values(action.payload)
+            state.user.courses = arr
+            state.status = 'fulfilled'
+        },
+        [updateUserData.pending]: (state) => {
+            state.status = 'loading'
+        },
+        [updateUserData.fulfilled]: (state, action) => {
+            console.log(action.payload.username);
+            state.userName = action.payload.username
+            state.userPassword = action.payload.password
+            state.status = 'fulfilled'
+        }
+    }
+})
 
-export const { setUser, removeUser } = userSlice.actions;
-export default userSlice.reducer;
-
-// initialState: {
-//         username: "sergey.petrov96",
-//         firstName: "Сергей",
-//         lastName: "Петров",
-//         email: "sergey.petrov96@mail.ru",
-//         password: "4fkhdj880d",
-//         courses: [
-//             "ab1c3f",
-//             "fgfr54u2",
-//             "qw4req21"
-//         ],
-//         completedWorkouts: [
-//             "19bc41fc",
-//             "3c9f0628"
-//         ]
-//     },
+export const { setUserEmail, setUserName, setUserPassword, setIsUser, addCourse } = userSlice.actions
+export default userSlice.reducer
