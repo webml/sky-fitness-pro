@@ -44,11 +44,7 @@ const trainingsSlice = createSlice({
     },
     extraReducers: {
         [getTraining.fulfilled]:(state, action) => {
-            const entries = Object.entries(action.payload.training)
-            entries.forEach(arr => {
-                const [key, value] = arr
-                state.currentTraining[key] = value
-            })
+            state.currentTraining = JSON.parse(JSON.stringify(action.payload.training))
             state.exercisesList = action.payload.list
         },
         [getTrainingList.fulfilled]:(state, action) => {

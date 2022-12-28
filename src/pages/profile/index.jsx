@@ -9,9 +9,10 @@ import Modal from '../../components/UI Kit/modal'
 import Button from '../../components/UI Kit/button'
 import { coursesImages } from "../../constants";
 import * as S from "./style";
+import { UserProfile } from "../../components/user-profile/userProfile";
 
 export function Profile() {
-  const { username, password, firstName } = useSelector(state => state.user)
+  const { user, status } = useSelector(state => state.user)
   const { currentCourses } = useSelector(state => state.courses)
   const { modalActive, currentModal } = useSelector(state => state.modal)
   const dispatch = useDispatch()
@@ -25,16 +26,14 @@ export function Profile() {
       <S.Header>
         <BlackLogo />
         <S.BoxMen>
-          <S.Ellipse />
-          <S.Name>{firstName}</S.Name>
-          <S.Menu />
+          <UserProfile />
         </S.BoxMen>
       </S.Header>
       <S.Сontents>
         <b>Мой профиль</b>
       </S.Сontents>
-      <S.Text>Логин: {username}</S.Text>
-      <S.Text>Пароль: {password}</S.Text>
+      {status !== 'loading' && <S.Text>Логин: {user.username}</S.Text>}
+      {status !== 'loading' && <S.Text>Пароль: {user.password}</S.Text>}
       <S.BoxButton>
         <Button title='Редактировать логин' />
         <Button title='Редактировать пароль' />
@@ -42,20 +41,23 @@ export function Profile() {
       <S.Сontents>
         <b>Мои курсы</b>
       </S.Сontents>
-      <S.BoxCurses>
-        {
-          currentCourses.map(course => (
-            <li key={course.CO_id}>
-              <Courses 
-                name={course.name}
-                img={coursesImages[course.name]}
-                butt="yes"
-                id={course.CO_id}
-              />
-            </li>
-          ))
-        }
-      </S.BoxCurses>
+      {
+        status !== 'loading'
+        &&  <S.BoxCurses>
+            {
+              currentCourses.map(course => (
+                <li key={course.CO_id}>
+                  <Courses 
+                    name={course.name}
+                    img={coursesImages[course.name]}
+                    butt="yes"
+                    id={course.CO_id}
+                  />
+                </li>
+              ))
+            }
+            </S.BoxCurses>
+      }
       {modalActive && 
         <Modal>
           {

@@ -16,11 +16,11 @@ const ChangeLoginOrPassword = ({ flag }) => {
       </S.ModalTitle>
         {
           flag === "Редактировать логин" ? 
-            <FormInput type="text" placeholder="Логин" />
+            <FormInput type="text" placeholder="Логин" name='login'/>
             : 
             <>
-              <FormInput type="password" placeholder="Пароль" />
-              <FormInput type="password" placeholder="Повторите пароль" />
+              <FormInput type="password" placeholder="Пароль" name='password'/>
+              <FormInput type="password" placeholder="Повторите пароль" name='repeat-pasword'/>
             </>
         }
       <S.ModalButtonBox>

@@ -9,11 +9,14 @@ import { useEffect } from "react";
 import { coursesImages } from "../../constants";
 import Modal from '../../components/UI Kit/modal'
 import { modalHandler } from '../../store/slices/modalSlice'
+import { setIsUser } from "../../store/slices/userSlice";
+import { UserProfile } from '../../components/user-profile/userProfile'
 
 function Main() {
   const dispatch = useDispatch()
   const { allCourses } = useSelector(state => state.courses)
   const { modalActive } = useSelector(state => state.modal)
+  const { isUser, auth } = useSelector(state => state.user)
 
   const up = () => {
     window.scrollTo({
@@ -23,17 +26,25 @@ function Main() {
   };
 
   useEffect(() => {
+    if(localStorage.getItem('sky-fitness-pro-userId')) {
+      dispatch(setIsUser(true))
+    }
     dispatch(getAllCourses())
-  }, [dispatch, modalActive])
+  }, [dispatch])
 
   return (
     <S.Main>
       <S.Header>
         {" "}
         <WhiteLogo />{" "}
-        <S.ButtonEnter onClick={() => dispatch(modalHandler())}>
-          Войти
-        </S.ButtonEnter>
+        {
+          !auth ? 
+          <S.ButtonEnter onClick={() => dispatch(modalHandler())}>
+            Войти
+          </S.ButtonEnter>
+          : <UserProfile />
+        }
+        
       </S.Header>
       <S.Box>
         <div>
@@ -76,7 +87,7 @@ function Main() {
       {
         modalActive
         && <Modal>
-          <LoginAndSignUp />
+          <LoginAndSignUp isUser={isUser}/>
         </Modal>
       }
     </S.Main>

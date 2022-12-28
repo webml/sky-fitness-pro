@@ -10,16 +10,24 @@ import { useSelector } from "react-redux";
 import { coursesImages } from "../../constants";
 
 const AboutCourse = () => {
-  const { currentCourse } = useSelector(state => state.courses)
+  const { currentCourse, status } = useSelector(state => state.courses)
 
   return (
     <S.Container>
       <BlackLogo />
-      <Header courseName={currentCourse?.name || ''} courseImg={coursesImages[currentCourse.name]} />
-      <Reasons reasons={currentCourse?.reasons || []} />
-      <Directions directions={currentCourse?.directions || []} />
-      <Description description={currentCourse.description || []} />
-      <Apply />
+      {
+        status !== 'loading' && 
+        <>
+          <Header 
+            courseName={currentCourse?.name} 
+            courseImg={coursesImages[currentCourse?.name]} 
+          />
+          <Reasons reasons={currentCourse?.reasons} />
+          <Directions directions={currentCourse?.directions} />
+          <Description description={currentCourse?.description} />
+          <Apply id={currentCourse?.CO_id}/>
+        </>
+      }
     </S.Container>
   );
 };

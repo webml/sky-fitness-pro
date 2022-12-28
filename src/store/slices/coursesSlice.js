@@ -16,7 +16,7 @@ export const getCoursesList = createAsyncThunk(
     async (_, { getState }) => {
         const state = getState()
         const currentCourses = await Promise.all(
-            state.user.courses.map(course => axios.get(`${COURSES_API}/${course}.json`))
+            state.user.userCourses.map(course => axios.get(`${COURSES_API}/${course}.json`))
         )
         return currentCourses.map(res => res.data)
     } 
@@ -34,7 +34,7 @@ const coursesSlice = createSlice({
     name: 'courses',
     initialState: {
         allCourses: [],
-        currentCourse: null,
+        currentCourse: {},
         currentCourses: []
     },
     reducers: {
@@ -43,8 +43,12 @@ const coursesSlice = createSlice({
         [getAllCourses.fulfilled]:(state, action) => {
             state.allCourses = action.payload
         },
+        [getCourseById.pending]: (state) => {
+            state.status = 'loading'
+        },
         [getCourseById.fulfilled]:(state, action) => {
-            state.currentCourse = action.payload
+            state.status = 'fulfilled'
+            state.currentCourse = JSON.parse(JSON.stringify(action.payload))
         },
         [getCoursesList.fulfilled]:(state, action) => {
             state.currentCourses = action.payload
